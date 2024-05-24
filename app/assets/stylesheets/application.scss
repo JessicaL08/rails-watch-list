@@ -1,0 +1,49 @@
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";
+
+// External libraries
+@import "bootstrap";
+@import "font-awesome";
+
+// Your CSS partials
+@import "components/index";
+@import "pages/index";
+
+.container {
+  background-color: #ced0d0;
+  padding: 20px;
+}
+
+.card {
+  display: flex;
+  margin: 10px;
+  box-shadow: 10px 10px;
+  color: #888788;
+  background-color: white;
+  border-radius: 10px;
+  width: 400px;
+  height: 350px;
+}
+
+.resto-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+}
+
+.item {
+  justify-content: center;
+  padding: 5px;
+  text-align: center;
+}
+
+.item img {
+  width: 100%;
+  height: 200px;
+}
+
+.item a {
+  text-decoration: none;
+}

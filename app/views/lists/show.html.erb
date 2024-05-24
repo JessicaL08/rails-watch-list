@@ -1,0 +1,22 @@
+<h1>Lists#show</h1>
+<p>Find me in app/views/lists/show.html.erb</p>
+
+<p>Coucou,
+
+Tout à l'heure on aura ici la liste de tous les films de notre playlist</p>
+
+<div class="btn-primary">
+  <%= link_to "Retour à l'index", lists_index_path %>
+</div>
+
+<%= @movies = Movie.all %>
+<%= @movies.each do |movie| %>
+<ul>
+  <li><%= movie.title %></li>
+  <li><%= movie.overview %></li>
+  <li><%= movie.poster_url %></li>
+  <li><%= movie.rating %></li>
+</ul>
+
+
+    <% end %>

@@ -7,3 +7,26 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'net/http'
+require 'uri'
+require 'json'
+
+uri = URI("https://tmdb.lewagon.com/movie/top_rated")
+res = Net::HTTP.get_response(uri)
+if res.is_a?(Net::HTTPSuccess)
+  @result = JSON.parse(res.body)
+else
+  puts "Failed to fetch data: #{res.code} #{res.message}"
+  exit
+end
+
+@result['results'].each do |movie|
+  Movie.create(
+    title: movie['title'],
+    overview: movie['overview'],
+    poster_url: movie['poster_path'],
+    rating: movie['vote_average']
+  )
+
+  
+end

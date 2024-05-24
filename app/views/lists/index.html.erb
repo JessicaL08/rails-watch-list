@@ -1,0 +1,19 @@
+<h1>Lists#index</h1>
+<p>Find me in app/views/lists/index.html.erb</p>
+
+<div class="container">
+  <ul class="resto-list">
+    <% @list.each do |list| %>
+      <li class="card">
+      <div class="item">
+        <img src="https://42info.fr/wp-content/uploads/2023/11/Restaurant-Saint-Etienne-42info.jpeg" width="400px">
+        <%= link_to list.name, lists_show_path %>
+      <% end %>
+    </li>
+    </div>
+  </ul>
+
+<div class="btn-primary">
+  <%= link_to "Créer une nouvelle liste", lists_new_path %>
+</div>
+  <div>
