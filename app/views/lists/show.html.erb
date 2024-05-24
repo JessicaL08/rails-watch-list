@@ -5,18 +5,39 @@
 
 Tout à l'heure on aura ici la liste de tous les films de notre playlist</p>
 
-<div class="btn-primary">
-  <%= link_to "Retour à l'index", lists_index_path %>
+<div button type="button" class="btn btn-primary">
+  <%= link_to "Retour à l'index", lists_path %>
 </div>
 
-<%= @movies = Movie.all %>
-<%= @movies.each do |movie| %>
-<ul>
-  <li><%= movie.title %></li>
-  <li><%= movie.overview %></li>
-  <li><%= movie.poster_url %></li>
-  <li><%= movie.rating %></li>
-</ul>
+<%= button_to "Retour à l'index", lists_path, class: "btn btn-primary" %>
 
 
+<% if @list.name == "All movies" %>
+  <ul class="resto-list">
+  <% @movies.each do |movie| %>
+  <div class="show">
+    <li class="card-show"><%= movie.title %></li>
+    </div>
+    <% poster_url = movie.poster_url %>
+    <img src="https://image.tmdb.org/t/p/w500/<%= poster_url %>" alt="">
+  <% end %>
+  </ul>
+<% else %>
+  <h2>Movies in <%= @list.name %> List</h2>
+  <ul>
+    <% @movies.each do |movie| %>
+      <li><%= movie.title %></li>
+      <% poster_url = movie.poster_url %>
+      <img src="https://image.tmdb.org/t/p/w500/<%= poster_url %>" alt="">
     <% end %>
+  </ul>
+<% end %>
+
+<div>
+  <h1>New bookmark</h1>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment %>
+  <%= f.association :movie %>
+  <%= f.submit %>
+<% end %>
+</div>

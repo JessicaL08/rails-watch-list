@@ -4,14 +4,10 @@
 <h2>Creat a new list <i>(qu'on appelera playlist parce que merde, moi je m'y perds !)</i></h2>
 
 <div class="btn-primary">
-  <%= link_to "Retour à l'index", lists_index_path %>
+  <%= link_to "Retour à l'index", lists_path %>
 </div>
 
-
-  <h1>New bookmark</h1>
-  <%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.input :comment %>
-  <%= f.association :movie %>
-  <%= f.association :list %>
-  <%= f.submit "Submit tesssst", class: "btn btn-primary" %>
+<%= simple_form_for(@list) do |f| %>
+ <%= f.input :name %>
+   <%= f.submit %>
 <% end %>

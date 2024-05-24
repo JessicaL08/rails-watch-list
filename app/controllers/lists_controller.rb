@@ -6,6 +6,8 @@ class ListsController < ApplicationController
   def show
     @bookmark = Bookmark.new
     @list = List.find(params[:id])
+    @movies = @list.name == "All movies" ? Movie.all : @list.movies
+    # @movies = Movie.all
   end
 
   def new
@@ -15,7 +17,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     @list.save
-    redirect_to lists_show_path(@list)
+    redirect_to lists_path(@list)
   end
 
   private
